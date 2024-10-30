@@ -35,8 +35,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         ........................
         ........................
         `)
-    if (inventario) {
-    	
+    if (inventario.indexOf("2") == 1) {
+        info.changeLifeBy(2)
     }
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
