@@ -35,12 +35,18 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         ........................
         ........................
         `)
-    if (inventario.indexOf("2") == 1) {
-        info.changeLifeBy(2)
-    }
 })
+function dizOi () {
+    game.splash("Oi")
+    game.showLongText("Olá mundo", DialogLayout.Bottom)
+}
+function itemAleatorio () {
+    objetos = [" Espada Mágica", " Amuleto Sagrado", " Botas de Couro"]
+    return objetos._pickRandom()
+}
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     tiles.setTileAt(location, sprites.dungeon.chestOpen)
+    dizOi()
     item = items._pickRandom()
     game.showLongText("Você encontrou" + item, DialogLayout.Bottom)
     inventario.push(item)
@@ -73,7 +79,11 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         ........................
         `)
 })
+function dizOiPara (text: string) {
+	
+}
 let item = ""
+let objetos: string[] = []
 let inventario: string[] = []
 let items: string[] = []
 let jogador: Sprite = null
