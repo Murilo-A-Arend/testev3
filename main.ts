@@ -1,6 +1,3 @@
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.stairNorth, function (sprite, location) {
-	
-})
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (inventario.length <= 0) {
         game.splash("Inventário vazio")
@@ -36,20 +33,17 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         ........................
         `)
 })
-function dizOi () {
-    game.splash("Oi")
-    game.showLongText("Olá mundo", DialogLayout.Bottom)
-}
 function itemAleatorio () {
-    objetos = [" Espada Mágica", " Amuleto Sagrado", " Botas de Couro"]
+    espada = " Espada Mágica"
+    botas = " Amuleto Sagrado"
+    amuleto = " Botas de Couro"
+    objetos = [espada, amuleto, botas]
     return objetos._pickRandom()
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     tiles.setTileAt(location, sprites.dungeon.chestOpen)
-    dizOi()
-    item = items._pickRandom()
-    game.showLongText("Você encontrou" + item, DialogLayout.Bottom)
-    inventario.push(item)
+    inventario.push(itemAleatorio())
+    game.showLongText("Você encontrou" + "World", DialogLayout.Bottom)
 })
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     jogador.setImage(img`
@@ -79,13 +73,11 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         ........................
         `)
 })
-function dizOiPara (text: string) {
-	
-}
-let item = ""
 let objetos: string[] = []
+let amuleto = ""
+let botas = ""
+let espada = ""
 let inventario: string[] = []
-let items: string[] = []
 let jogador: Sprite = null
 jogador = sprites.create(img`
     ........................
@@ -119,5 +111,5 @@ tiles.setCurrentTilemap(tilemap`level2`)
 scene.setBackgroundColor(11)
 tiles.placeOnTile(jogador, tiles.getTileLocation(randint(7, 8), 1))
 scene.cameraFollowSprite(jogador)
-items = [" Espada Mágica", " Amuleto Sagrado", " Botas de Couro"]
+let items = [" Espada Mágica", " Amuleto Sagrado", " Botas de Couro"]
 inventario = []
